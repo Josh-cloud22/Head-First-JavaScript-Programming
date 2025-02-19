@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body style="display: flex; justify-content: center; justify-content: space-between;">
+    <!-- <button id="myButton" style="padding: 2%; place-items: center;color: black; background-color: bisque;">
+        Click Me!
+    </button> -->
+    
+    <form>
+        
+        <label for="mass">Mass(kg)</label>
+        <input type="number" id="mass" required>
+        
+        
+        
+        <label for="height">Heigh(cm)</label>
+        <input type="number" id="height" required>
+        
+
+        
+        <button id="calculate-button" type="button">
+                Calculate Potential Energy
+        </button>
+        
+    </form>
+    <p id="result"></p>
+
+
+    <script>
+       const mass = document.getElementById("mass");
+       const height = document.getElementById("height");
+       const button = document.getElementById("calculate-button");
+       const result = document.getElementById("result");
+
+       button.addEventListener("click", (e)=> {
+        e.preventDefault();
+        const massValue = parseFloat (mass.value);
+        const heightValue = parseFloat (height.value);
+
+        // if(isNaN (massValue) || isNaN (heightValue)){
+        //     result.textContent ="Please enter valid values for mass and height.";
+        //     return;
+        // }
+        const potentialEnergy = calculatePotentialEnergy (massValue, heightValue);
+        result.textContent = `Potential Energy:${potentialEnergy.toFixed(2)} Joules`
+       }); 
+
+       function calculatePotentialEnergy(mass, height){
+        const gravity = 9.81;
+        // alert(mass*gravity*height);
+        return mass * gravity * height;
+        
+       } 
+    </script>
+</body>
+</html>
